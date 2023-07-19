@@ -5,5 +5,7 @@ __pycache__/
 
 #virtual environment
 venv/
+.venv
+
 my_env
 .vscode
