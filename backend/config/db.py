@@ -10,3 +10,4 @@ def connection(connection):
         print("connected to db")
     except Exception as e:
         print("Error connecting to db")    
+
