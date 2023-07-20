@@ -40,4 +40,30 @@ def get_managers_byId(manager_id):
         return jsonify({"message":"Portfolio Manager not found"}),404
     
 
+def update_managers_byId(manager_id):
+    data = request.json
+    name = data['name']
+    email = data['email']
+    contact = data['contact']
+
+    manager_collection = db['portfolio_Manager']
+    updated_manager = manager_collection.update_one({"_id":manager_id},{"$set":{
+        'name':name,
+        'email':email,
+        'contact':contact
+    }})
+
+    if updated_manager.matched_count>0:
+        return jsonify({"message":"Portfolio manager updated Successfully"}),200
+    else:
+        return jsonify({"message":"Portfolio manager not found"}),404
     
+
+def delete_manager(manager_id):
+    manager_collection = db['portfolio_Manager']
+    deleted_manager = manager_collection.delete_one({"_id":manager_id})
+
+    if deleted_manager.deleted_count>0:
+        return jsonify({"message":"Portfolio manager deleted successfully"}),200
+    else:
+        return jsonify({"message":"Portfolio manager not found"}),404

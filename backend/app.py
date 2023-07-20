@@ -7,6 +7,11 @@ from routes.manager_route import manager_router
 app = Flask(__name__)
 CORS(app)
 
+#home route
+@app.route('/', methods=['GET'])
+def welcome():
+    return ('Welcome to prism port application!')
+
 app.register_blueprint(manager_router,url_prefix='/manager')
 
 if __name__ == '__main__':
