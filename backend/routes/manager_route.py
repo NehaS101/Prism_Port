@@ -13,3 +13,9 @@ manager_router.route('/portfolio-managers',methods=['POST'])(create_managers)
 
 manager_router.route('/portfolio-managers',methods=['GET'])(getAll_managers)
 
+manager_router.route('/portfolio-managers/<string:manager_id>',methods=['GET'])(get_managers_byId)
+
+manager_router.route('/portfolio-managers/<string:manager_id>',methods=['PUT'])(update_managers_byId)
+
+manager_router.route('/portfolio-managers/<string:manager_id>',methods=['DELETE'])(delete_manager)
+
