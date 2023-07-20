@@ -1,7 +1,6 @@
 #Python
 __pycache__/
 *.env
-*.gitignore
 
 
 #virtual environment
@@ -10,3 +9,6 @@ venv/
 
 my_env
 .vscode
+
+
+!.gitignore
