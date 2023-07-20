@@ -67,3 +67,5 @@ def delete_manager(manager_id):
         return jsonify({"message":"Portfolio manager deleted successfully"}),200
     else:
         return jsonify({"message":"Portfolio manager not found"}),404
+    
+    
