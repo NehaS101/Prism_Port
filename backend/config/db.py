@@ -12,3 +12,5 @@ def connection():
     except Exception as e:
         print("Error connecting to db")    
 
+client = connection()
+db = client.prism
