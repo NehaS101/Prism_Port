@@ -1,8 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import {BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom'
-
+import {BrowserRouter as Router,Route,Routes,Link,Switch} from 'react-router-dom'
+import ManagerComponent from './components/managercomponent';
+import ProjectComponent from './components/projectcomponent';
+import TaskComponent from './components/taskcomponent';
+import ResourceComponent from './components/resourcecomponent';
+import LoginComponent from './components/loginComponent';
+import SignupComponent from './components/signupComponent';
 
 function App() {
   
@@ -35,6 +40,7 @@ function App() {
         </ul>
       </nav>
       <div>
+        <Routes>
         <Route exact path="/">
 
         </Route>
@@ -56,7 +62,8 @@ function App() {
         <Route exact path="/signup">
           <SignupComponent />
         </Route>
-      </div>
+        </Routes>
+      </div> 
     </div>
   </Router>
   );
