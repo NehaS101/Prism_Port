@@ -13,4 +13,4 @@ def connection():
         print("Error connecting to db")    
 
 client = connection()
-db = client.prism
+db = client["prism"]

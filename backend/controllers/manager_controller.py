@@ -1,4 +1,5 @@
 from flask import request, jsonify
+from bson import ObjectId
 import sys
 import os
 
@@ -9,6 +10,7 @@ sys.path.append(parent_dir)
 
 from config.db import db
 
+#creating new portfolio managers
 def create_managers():
     data = request.json
     name = data['name']
@@ -25,21 +27,30 @@ def create_managers():
 
     return jsonify({"message":"New Portfolio Manager created successfully"})
 
+#getting all portfolio managers
 def getAll_managers():
     manager_collection = db['portfolio_Manager']
     managers = list(manager_collection.find())
+
+    # Convert ObjectId instances to strings
+    for manager in managers:
+        manager["_id"] = str(manager["_id"])
+
     return jsonify(managers),200
 
+#getting particular manager with specific id
 def get_managers_byId(manager_id):
     manager_collection = db['portfolio_Manager']
-    manager = manager_collection.find_one({"_id":manager_id})
+    manager = manager_collection.find_one({"_id":ObjectId(manager_id)})
+
+    manager["_id"] = str(manager["_id"])
 
     if manager:
         return jsonify(manager),200
     else:
         return jsonify({"message":"Portfolio Manager not found"}),404
     
-
+#updating portfolio managers
 def update_managers_byId(manager_id):
     data = request.json
     name = data['name']
@@ -47,7 +58,7 @@ def update_managers_byId(manager_id):
     contact = data['contact']
 
     manager_collection = db['portfolio_Manager']
-    updated_manager = manager_collection.update_one({"_id":manager_id},{"$set":{
+    updated_manager = manager_collection.update_one({"_id":ObjectId(manager_id)},{"$set":{
         'name':name,
         'email':email,
         'contact':contact
@@ -58,14 +69,13 @@ def update_managers_byId(manager_id):
     else:
         return jsonify({"message":"Portfolio manager not found"}),404
     
-
+#deleting portfolio managers
 def delete_manager(manager_id):
     manager_collection = db['portfolio_Manager']
-    deleted_manager = manager_collection.delete_one({"_id":manager_id})
+    deleted_manager = manager_collection.delete_one({"_id":ObjectId(manager_id)})
 
     if deleted_manager.deleted_count>0:
         return jsonify({"message":"Portfolio manager deleted successfully"}),200
     else:
         return jsonify({"message":"Portfolio manager not found"}),404
-    
     
