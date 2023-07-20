@@ -1,0 +1,15 @@
+#Python
+__pycache__/
+*.env
+
+
+#virtual environment
+venv/
+.venv
+
+my_env
+.vscode
+
+# checking
+
+
