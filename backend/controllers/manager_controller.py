@@ -14,14 +14,18 @@ from config.db import db
 def create_managers():
     data = request.json
     name = data['name']
-    email = data['email']
-    contact = data['contact']
+    status = data['status']
+    role = data['role']
+    bio = data['bio']
+    start_date = data['start_date']
 
     manager_collection = db['portfolio_Manager']
     manager_data = {
         'name':name,
-        'email':email,
-        'contact':contact
+        'status': status,
+        'role': role,
+        'bio': bio,
+        'start_date': start_date
     }
     manager_id = manager_collection.insert_one(manager_data).inserted_id
 
@@ -54,14 +58,18 @@ def get_managers_byId(manager_id):
 def update_managers_byId(manager_id):
     data = request.json
     name = data['name']
-    email = data['email']
-    contact = data['contact']
+    status = data['status']
+    role = data['role']
+    bio = data['bio']
+    start_date = data['start_date']
 
     manager_collection = db['portfolio_Manager']
     updated_manager = manager_collection.update_one({"_id":ObjectId(manager_id)},{"$set":{
         'name':name,
-        'email':email,
-        'contact':contact
+        'status': status,
+        'role': role,
+        'bio': bio,
+        'start_date': start_date
     }})
 
     if updated_manager.matched_count>0:
