@@ -11,4 +11,5 @@ my_env
 .vscode
 
 
-!.gitignore
+.gitignore
+
