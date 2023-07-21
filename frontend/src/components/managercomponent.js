@@ -66,7 +66,7 @@ const ManagerComponent = () => {
   return (
     <div className="manager">
       <h1>Portfolio Managers</h1>
-      <hr></hr>
+      <hr className="hr-man"></hr>
       <form onSubmit={handleSubmit}>
         <h4>Please enter your name</h4>
         <input className="custom-input"

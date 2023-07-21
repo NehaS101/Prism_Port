@@ -1,15 +1,15 @@
-import React,{useEffect,useState} from 'react';
-import ProjectService from '../services/projectService';
-import "../modules/project.css"
+import React, { useEffect, useState } from "react";
+import ProjectService from "../services/projectService";
+import "../modules/project.css";
 
-const ProjectComponent=()=>{
-    const [projects, setProjects] = useState([]);
+const ProjectComponent = () => {
+  const [projects, setProjects] = useState([]);
   const [formData, setFormData] = useState({
-    project_name: '',
-    status: '',
-    start_date: '',
-    end_date: '',
-    portfolio_manager_id: '',
+    project_name: "",
+    status: "",
+    start_date: "",
+    end_date: "",
+    portfolio_manager_name: "",
   });
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const ProjectComponent=()=>{
       const allProjects = await ProjectService.getAllProjects();
       setProjects(allProjects);
     } catch (error) {
-      console.error('Error fetching projects:', error);
+      console.error("Error fetching projects:", error);
     }
   };
 
@@ -34,24 +34,27 @@ const ProjectComponent=()=>{
     try {
       await ProjectService.createProject(formData);
       setFormData({
-        project_name: '',
-        status: '',
-        start_date: '',
-        end_date: '',
-        portfolio_manager_id: '',
+        project_name: "",
+        status: "",
+        start_date: "",
+        end_date: "",
+        portfolio_manager_name: "",
       });
       fetchAllProjects();
     } catch (error) {
-      console.error('Error creating project:', error);
+      console.error("Error creating project:", error);
     }
   };
 
   return (
-    <div className='project'>
+    <div className="project">
       <h1>Projects</h1>
       <hr></hr>
-      <form onSubmit={handleSubmit}>
-        <input
+      <div>
+        <div>
+        <form onSubmit={handleSubmit}>
+        <h4>Please enter project name</h4>
+        <input className="input"
           type="text"
           name="project_name"
           value={formData.project_name}
@@ -59,7 +62,13 @@ const ProjectComponent=()=>{
           placeholder="Project Name"
           required
         />
-        <select name="status" value={formData.status} onChange={handleInputChange} required>
+        <h4>Please select status of your project</h4>
+        <select className="input"
+          name="status"
+          value={formData.status}
+          onChange={handleInputChange}
+          required
+        >
           <option value="" disabled>
             Select Status
           </option>
@@ -67,35 +76,50 @@ const ProjectComponent=()=>{
           <option value="In Progress">In Progress</option>
           <option value="Completed">Completed</option>
         </select>
-        <input
+        <h4>Choose start date</h4>
+        <input className="input"
           type="date"
           name="start_date"
           value={formData.start_date}
           onChange={handleInputChange}
           required
         />
-        <input type="date" name="end_date" value={formData.end_date} onChange={handleInputChange} required />
-        <input
-          type="text"
-          name="portfolio_manager_id"
-          value={formData.portfolio_manager_id}
+        <h4>Choose end date</h4>
+        <input className="input"
+          type="date"
+          name="end_date"
+          value={formData.end_date}
           onChange={handleInputChange}
-          placeholder="Portfolio Manager ID"
           required
         />
+        <h4>Please choose and write portfolio manager name  </h4>
+        <input className="input"
+          type="text"
+          name="portfolio_manager_name"
+          value={formData.portfolio_manager_name}
+          onChange={handleInputChange}
+          placeholder="Portfolio Manager Name"
+          required
+        /><br/>
         <button type="submit">Create Project</button>
-      </form>
-      {projects.map((project) => (
+        </form>
+        </div>
+        <div>
+        {projects.map((project) => (
         <div key={project._id}>
           <p>Project Name: {project.project_name}</p>
           <p>Status: {project.status}</p>
           <p>Start Date: {project.start_date}</p>
           <p>End Date: {project.end_date}</p>
-          <p>Portfolio Manager ID: {project.portfolio_manager_id}</p>
+          {/* <p>Portfolio Manager ID: {project.portfolio_manager_id}</p> */}
         </div>
       ))}
+        </div>
+      </div>
+      
+      
     </div>
   );
-}
+};
 
-export default ProjectComponent
+export default ProjectComponent;

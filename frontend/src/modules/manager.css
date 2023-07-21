@@ -16,7 +16,7 @@ form{
 h4{
     color: rgb(37, 37, 37);
 }
-hr{
+.hr-man{
     width: 310px;
     background-color: rgb(189,135,9);
     height: 2px;

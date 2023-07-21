@@ -16,7 +16,7 @@ const ProjectService = {
         body: JSON.stringify(projectData),
       });
       const data = await response.json();
-      console.log(data)
+     alert(data.message)
       return data;
     },
   };
