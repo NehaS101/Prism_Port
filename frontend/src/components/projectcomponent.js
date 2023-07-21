@@ -49,9 +49,9 @@ const ProjectComponent = () => {
   return (
     <div className="project">
       <div className="project-main">
-        <div>
-          <h1>Enter Project Details</h1>
-          <hr className="project-hr"></hr>
+        <div >
+            <h1>Enter Project Details</h1>
+            <hr className="project-hr"></hr>
           <form onSubmit={handleSubmit} className="form-project">
             <h4>Please enter project name</h4>
             <input
@@ -115,30 +115,22 @@ const ProjectComponent = () => {
           <hr></hr>
           <div className="project-list">
             <div className="project1">
-              <h2>Filter by status</h2>
-              <select
-                name="filter_status"
-                value={formData.filter_status}
-                onChange={handleInputChange}
-              >
-                <option value="">Select Status</option>
-                <option value="Planned">Planned</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Completed">Completed</option>
-              </select>
+                <h2>Filter by status</h2>
+                
             </div>
             <div className="project2">
-              {projects.map((project) => (
-                <div key={project._id}>
-                  <p>Project Name: {project.project_name}</p>
-                  <p>Status: {project.status}</p>
-                  <p>Start Date: {project.start_date}</p>
-                  <p>End Date: {project.end_date}</p>
-                  {/* <p>Portfolio Manager ID: {project.portfolio_manager_id}</p> */}
-                </div>
-              ))}
-            </div>
+            {projects.map((project) => (
+              <div key={project._id} className="project-div">
+                <p className="title">Project Name: {project.project_name}</p>
+                <p className="status">Status: {project.status}</p>
+                <p className="start">Start Date: {project.start_date}</p>
+                <p className="end">End Date: {project.end_date}</p>
+                {/* <p>Portfolio Manager ID: {project.portfolio_manager_id}</p> */}
+              </div>
+            ))}
           </div>
+          </div>
+         
         </div>
       </div>
     </div>
