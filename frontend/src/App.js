@@ -18,9 +18,8 @@ function App() {
     <div className="App">
       <nav>
         <ul>
-          <li><img className="logo" src ={require("./image/logo.png")} /></li>
           <li>
-            <Link to="/" className='link'>Home</Link>
+            <Link to="/" className='link'><img className="logo" src ={require("./image/logo3.png")} /></Link>
           </li>
           <li>
             <Link to="/portfolio-managers" className='link'>Portfolio Managers</Link>
