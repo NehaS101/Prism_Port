@@ -1,6 +1,6 @@
 import api from "../api/api";
 
-const fetchAllPortfolioManagers = async () => {
+export const fetchAllPortfolioManagers = async () => {
     try {
       const response = await api.get('manager/portfolio-managers');
       return response.data;
@@ -9,7 +9,7 @@ const fetchAllPortfolioManagers = async () => {
     }
   };
 
-const createPortfolioManager = async (portfolioManagerData) => {
+export const createPortfolioManager = async (portfolioManagerData) => {
     try {
       const response = await api.post('manager/portfolio-managers', portfolioManagerData);
       return response.data;
@@ -35,7 +35,7 @@ const updatePortfolioManager = async (portfolioManagerId, portfolioManagerData) 
       throw error;
     }
   };  
-const deletePortfolioManager = async (portfolioManagerId) => {
+export const deletePortfolioManager = async (portfolioManagerId) => {
     try {
       const response = await api.delete(`manager/portfolio-managers/${portfolioManagerId}`);
       return response.data;
@@ -44,4 +44,3 @@ const deletePortfolioManager = async (portfolioManagerId) => {
     }
   }; 
  
-export default {createPortfolioManager, updatePortfolioManager,getPortfolioManagerById, deletePortfolioManager,fetchAllPortfolioManagers}  
