@@ -10,6 +10,7 @@ sys.path.append(parent_dir)
 
 from config.db import db
 
+# //creating project
 def create_project():
     data = request.json
     project_name = data.get('project_name')
@@ -22,7 +23,7 @@ def create_project():
         return jsonify({'message': 'Missing required fields'}), 400
 
     # Get the Portfolio Manager ID based on the provided email
-    portfolio_manager = db.portfolio_manager.find_one({'name': portfolio_manager_name})
+    portfolio_manager = db.portfolio_Manager.find_one({'name': portfolio_manager_name})
     if not portfolio_manager:
         return jsonify({'message': 'Portfolio Manager not found'}), 404
 
@@ -36,3 +37,11 @@ def create_project():
 
     project_id = db.projects.insert_one(project_data).inserted_id
     return jsonify({'message': 'Project created successfully', 'project_id': str(project_id)}), 201
+
+# //getting projects
+def get_all_projects():
+    projects = list(db.projects.find({}))
+    for project in projects:
+        project['_id'] = str(project['_id'])
+        project['portfolio_manager_id'] = str(project['portfolio_manager_id'])
+    return jsonify(projects), 200

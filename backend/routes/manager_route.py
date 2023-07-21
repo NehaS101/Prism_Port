@@ -7,7 +7,7 @@ from controllers.manager_controller import(
     delete_manager
 )
 
-manager_router = Blueprint('crud', __name__)
+manager_router = Blueprint('manager', __name__)
 
 manager_router.route('/portfolio-managers',methods=['POST'])(create_managers)
 

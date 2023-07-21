@@ -3,6 +3,7 @@ from flask import Flask
 import os
 from flask_cors import CORS
 from routes.manager_route import manager_router
+from routes.project_route import project_router
 
 app = Flask(__name__)
 CORS(app)
@@ -15,6 +16,7 @@ def welcome():
 
 #routers
 app.register_blueprint(manager_router,url_prefix='/manager')
+app.register_blueprint(project_router,url_prefix='/project')
 
 if __name__ == '__main__':
     connection()
