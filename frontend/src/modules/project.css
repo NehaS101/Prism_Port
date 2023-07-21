@@ -1,20 +1,23 @@
 .project{
     padding-top: 6%;
 }
-form{
-    width: 30%;
+.form-project{
+    width: 100%;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 30px;
     text-align: left;
 }
 hr{
-    width: 130px;
+    width: 200px;
     background-color: rgb(189,135,9);
     height: 2px;
-    margin-top: 0;
+    margin-bottom: 40px;
 }
-h4{
+.project-hr{
+    width: 330px;
+}
+h4,h2{
     color: rgb(37, 37, 37);
 }
 button{
@@ -39,4 +42,25 @@ button{
 
 .input:focus{
     border: 1.5px solid red;
+}
+.project-main{
+    display: flex;
+    margin: auto;
+    width: 85%;
+    justify-content: space-between;
+}
+.project2{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    padding: 20px;
+}
+.project-list{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.project1{
+    box-shadow: rgba(151, 23, 77, 0.4) 5px 5px;
+    padding: 30px;
 }

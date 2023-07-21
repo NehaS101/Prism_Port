@@ -48,76 +48,99 @@ const ProjectComponent = () => {
 
   return (
     <div className="project">
-      <h1>Projects</h1>
-      <hr></hr>
-      <div>
+      <div className="project-main">
         <div>
-        <form onSubmit={handleSubmit}>
-        <h4>Please enter project name</h4>
-        <input className="input"
-          type="text"
-          name="project_name"
-          value={formData.project_name}
-          onChange={handleInputChange}
-          placeholder="Project Name"
-          required
-        />
-        <h4>Please select status of your project</h4>
-        <select className="input"
-          name="status"
-          value={formData.status}
-          onChange={handleInputChange}
-          required
-        >
-          <option value="" disabled>
-            Select Status
-          </option>
-          <option value="Planned">Planned</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Completed">Completed</option>
-        </select>
-        <h4>Choose start date</h4>
-        <input className="input"
-          type="date"
-          name="start_date"
-          value={formData.start_date}
-          onChange={handleInputChange}
-          required
-        />
-        <h4>Choose end date</h4>
-        <input className="input"
-          type="date"
-          name="end_date"
-          value={formData.end_date}
-          onChange={handleInputChange}
-          required
-        />
-        <h4>Please choose and write portfolio manager name  </h4>
-        <input className="input"
-          type="text"
-          name="portfolio_manager_name"
-          value={formData.portfolio_manager_name}
-          onChange={handleInputChange}
-          placeholder="Portfolio Manager Name"
-          required
-        /><br/>
-        <button type="submit">Create Project</button>
-        </form>
+          <h1>Enter Project Details</h1>
+          <hr className="project-hr"></hr>
+          <form onSubmit={handleSubmit} className="form-project">
+            <h4>Please enter project name</h4>
+            <input
+              className="input"
+              type="text"
+              name="project_name"
+              value={formData.project_name}
+              onChange={handleInputChange}
+              placeholder="Project Name"
+              required
+            />
+            <h4>Please select status of your project</h4>
+            <select
+              className="input"
+              name="status"
+              value={formData.status}
+              onChange={handleInputChange}
+              required
+            >
+              <option value="" disabled>
+                Select Status
+              </option>
+              <option value="Planned">Planned</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+            <h4>Choose start date</h4>
+            <input
+              className="input"
+              type="date"
+              name="start_date"
+              value={formData.start_date}
+              onChange={handleInputChange}
+              required
+            />
+            <h4>Choose end date</h4>
+            <input
+              className="input"
+              type="date"
+              name="end_date"
+              value={formData.end_date}
+              onChange={handleInputChange}
+              required
+            />
+            <h4>Please choose and write portfolio manager name </h4>
+            <input
+              className="input"
+              type="text"
+              name="portfolio_manager_name"
+              value={formData.portfolio_manager_name}
+              onChange={handleInputChange}
+              placeholder="Portfolio Manager Name"
+              required
+            />
+            <br />
+            <button type="submit">Create Project</button>
+          </form>
         </div>
         <div>
-        {projects.map((project) => (
-        <div key={project._id}>
-          <p>Project Name: {project.project_name}</p>
-          <p>Status: {project.status}</p>
-          <p>Start Date: {project.start_date}</p>
-          <p>End Date: {project.end_date}</p>
-          {/* <p>Portfolio Manager ID: {project.portfolio_manager_id}</p> */}
-        </div>
-      ))}
+          <h1>Projects List</h1>
+          <hr></hr>
+          <div className="project-list">
+            <div className="project1">
+              <h2>Filter by status</h2>
+              <select
+                name="filter_status"
+                value={formData.filter_status}
+                onChange={handleInputChange}
+              >
+                <option value="">Select Status</option>
+                <option value="Planned">Planned</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+            <div className="project2">
+              {projects.map((project) => (
+                <div key={project._id}>
+                  <p>Project Name: {project.project_name}</p>
+                  <p>Status: {project.status}</p>
+                  <p>Start Date: {project.start_date}</p>
+                  <p>End Date: {project.end_date}</p>
+                  {/* <p>Portfolio Manager ID: {project.portfolio_manager_id}</p> */}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-      
-      
     </div>
   );
 };
