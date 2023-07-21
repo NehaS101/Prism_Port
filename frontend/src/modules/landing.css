@@ -1,4 +1,23 @@
-
+.landing-page{
+    margin-top: 100px;
+}
+.main-logo{
+    display: flex;
+    margin: auto;
+    width: 60%;
+    justify-content: space-between;
+}
+.div1,.div2{
+width: 50%;
+}
+.div1>img{
+    width: 60%;
+    height: 60%;
+    margin-top: 80px;
+}
+.div2>h3{
+margin-top: 150px;
+}
 .footer{
     background-color: rgb(180, 139, 5);
 }

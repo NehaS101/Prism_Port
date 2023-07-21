@@ -37,6 +37,9 @@
   }
 }
 /* my code */
+::-webkit-scrollbar{
+  display: none;
+}
 ul{
   list-style-type: none;
   display: flex;

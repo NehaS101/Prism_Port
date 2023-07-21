@@ -5,16 +5,16 @@ import "../modules/landing.css";
 const LandingComponent = () => {
   return (
     <div className="landing-page">
-      <div>
-        <div>
-          <img src={require("../image/logo2.png")} alt="logo" />
+      <div className="main-logo">
+        <div className="div1">
+          <img src={require("../image/logo.png")} alt="logo" />
         </div>
-        <div>
-          <p>
+        <div className="div2">
+          <h3>
             PrismPort is a Portfolio Management Application that streamlines the
             process of project and task management for portfolio managers.
             Manage your projects, tasks, and resources efficiently in one place.
-          </p>
+          </h3>
         </div>
       </div>
 
