@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../modules/manager.css"
 import {
   createPortfolioManager,
   deletePortfolioManager,
@@ -63,10 +64,12 @@ const ManagerComponent = () => {
   };
 
   return (
-    <div>
-      <h2>Portfolio Managers</h2>
+    <div className="manager">
+      <h1>Portfolio Managers</h1>
+      <hr></hr>
       <form onSubmit={handleSubmit}>
-        <input
+        <h4>Please enter your name</h4>
+        <input className="custom-input"
           type="text"
           name="name"
           value={formData.name}
@@ -74,36 +77,39 @@ const ManagerComponent = () => {
           placeholder="Name"
           required
         />
-        <input
-          type="text"
+        <h4>Please check if you are active</h4>
+        <input className="custom-input"
+          type="checkbox"
           name="status"
           value={formData.status}
           onChange={handleInputChange}
           placeholder="Status"
           required
         />
-        <input
-          type="text"
-          name="role"
-          value={formData.role}
-          onChange={handleInputChange}
-          placeholder="Role"
-          required
-        />
-        <textarea
+        <h4>Please select your role</h4>
+         <select className="custom-input" name="role" value={formData.role} onChange={handleInputChange} required>
+          <option value="" disabled>
+            Select Role
+          </option>
+          <option value="Administrator">Administrator</option>
+          <option value="Viewer">Viewer</option>
+        </select>
+        <h4>Write about yourself</h4>
+        <textarea className="custom-input"
           name="bio"
           value={formData.bio}
           onChange={handleInputChange}
           placeholder="Bio"
           required
         />
-        <input
+        <h4>Select date</h4>
+        <input className="custom-input"
           type="date"
           name="start_date"
           value={formData.start_date}
           onChange={handleInputChange}
           required
-        />
+        /><br/>
         <button type="submit">Create Portfolio Manager</button>
       </form>
       {portfolioManagers.map((manager) => (

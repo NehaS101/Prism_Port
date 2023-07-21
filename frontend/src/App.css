@@ -48,6 +48,13 @@ ul{
   font-size: 25px;
   width: 100%;
   font-weight: bold;
+  
+}
+li{
+  border: 1px solid rgba(189,135,9);
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
 }
 .logo{
   margin-top: -30%;
