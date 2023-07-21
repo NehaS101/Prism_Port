@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+/* my code */
+ul{
+  list-style-type: none;
+  display: flex;
+  text-decoration: none;
+  justify-content: space-between;
+  font-size: 25px;
+  
+  width: 100%;
+ 
+}
+.logo{
+  width: 120%;
+  height: 130%;
+}
+nav{
+display: flex;
+justify-content: space-between;
+height: 90px;
+box-shadow: rgba(189,135,9) 0px 5px 15px;
+}
+
+.link{
+  text-decoration: none;
+  color: white;
+}

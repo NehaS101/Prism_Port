@@ -20,25 +20,25 @@ function App() {
         <ul>
           <li><img className="logo" src ={require("./image/logo.png")} /></li>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" className='link'>Home</Link>
           </li>
           <li>
-            <Link to="/portfolio-managers">Portfolio Managers</Link>
+            <Link to="/portfolio-managers" className='link'>Portfolio Managers</Link>
           </li>
           <li>
-            <Link to="/projects">Projects</Link>
+            <Link to="/projects" className='link'>Projects</Link>
           </li>
           <li>
-            <Link to ="/tasks">Tasks</Link>
+            <Link to ="/tasks" className='link'>Tasks</Link>
           </li>
           <li>
-            <Link to="/resources">Resources</Link>
+            <Link to="/resources" className='link'>Resources</Link>
           </li>
           <li>
-            <Link to="/login">Login</Link>
+            <Link to="/login" className='link'>Login</Link>
           </li>
           <li>
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/signup" className='link'>Sign Up</Link>
           </li>
         </ul>
       </nav>

@@ -1,5 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {Link} from "react-router-dom";
+import '../modules/landing.css';
+
 const LandingComponent=()=>{
     return (
         <div className="landing-page">
@@ -64,7 +66,7 @@ const LandingComponent=()=>{
         </div>
       </section>
       <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} PrismPort. All rights reserved.</p>
+        <p className='foot'>&copy; {new Date().getFullYear()} PrismPort. All rights reserved.</p>
       </footer>
       </div>
     )
