@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import {BrowserRouter as Router,Route,Routes,Link,Switch} from 'react-router-dom'
+import {BrowserRouter as Router,Route,Routes,Link} from 'react-router-dom'
 import ManagerComponent from './components/managercomponent';
 import ProjectComponent from './components/projectcomponent';
 import TaskComponent from './components/taskcomponent';
@@ -41,28 +41,14 @@ function App() {
       </nav>
       <div>
         <Routes>
-        <Route exact path="/">
-
-        </Route>
-        <Route exact path="/portfolio-managers">
-          <ManagerComponent />
-        </Route>
-        <Route exact path="/projects">
-          <ProjectComponent />
-        </Route>
-        <Route exact path="/tasks">
-          <TaskComponent />
-        </Route>
-        <Route exact path="/resources">
-          <ResourceComponent />
-        </Route>
-        <Route exact path="/login">
-          <LoginComponent />
-        </Route>
-        <Route exact path="/signup">
-          <SignupComponent />
-        </Route>
-        </Routes>
+        <Route path="/" ></Route>
+        <Route path="/portfolio-managers" element={<ManagerComponent />}></Route>
+        <Route path="/projects" element={<ProjectComponent />}></Route>
+        <Route path="/tasks" element={<TaskComponent />}></Route>
+        <Route path="/resources" element={<ResourceComponent />}></Route>
+        <Route path="/login" element={ <LoginComponent />}></Route>
+        <Route path="/signup" element={<SignupComponent />}></Route>
+        </Routes> 
       </div> 
     </div>
   </Router>
