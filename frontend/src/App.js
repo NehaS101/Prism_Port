@@ -8,6 +8,8 @@ import TaskComponent from './components/taskcomponent';
 import ResourceComponent from './components/resourcecomponent';
 import LoginComponent from './components/loginComponent';
 import SignupComponent from './components/signupComponent';
+import LandingComponent from './components/landing component';
+
 
 function App() {
   
@@ -16,6 +18,7 @@ function App() {
     <div className="App">
       <nav>
         <ul>
+          <li><img className="logo" src ={require("./image/logo.png")} /></li>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -41,7 +44,7 @@ function App() {
       </nav>
       <div>
         <Routes>
-        <Route path="/" ></Route>
+        <Route path="/" element={<LandingComponent />}></Route>
         <Route path="/portfolio-managers" element={<ManagerComponent />}></Route>
         <Route path="/projects" element={<ProjectComponent />}></Route>
         <Route path="/tasks" element={<TaskComponent />}></Route>
