@@ -46,6 +46,15 @@ const ProjectComponent = () => {
     }
   };
 
+  const handleDelete = async (projectId) => {
+    try {
+      await ProjectService.deleteProject(projectId);
+      setProjects(projects.filter((project) => project._id !== projectId));
+    } catch (error) {
+      console.error('Error deleting project:', error);
+    }
+  };
+  
   return (
     <div className="project">
       <div className="project-main">
@@ -126,6 +135,7 @@ const ProjectComponent = () => {
                 <p className="start">Start Date: {project.start_date}</p>
                 <p className="end">End Date: {project.end_date}</p>
                 {/* <p>Portfolio Manager ID: {project.portfolio_manager_id}</p> */}
+                <button onClick={() => handleDelete(project._id)}>Delete</button>
               </div>
             ))}
           </div>

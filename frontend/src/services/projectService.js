@@ -19,6 +19,17 @@ const ProjectService = {
      alert(data.message)
       return data;
     },
+    deleteProject: async (projectId) => {
+      try {
+       const response= await fetch(`${BASE_URL}/project/delete-project${projectId}`, {
+          method: 'DELETE',
+        });
+        const data = await response.json();
+        alert(data.message)
+      } catch (error) {
+        throw new Error('Error deleting project:', error);
+      }
+    },
   };
   
   export default ProjectService;

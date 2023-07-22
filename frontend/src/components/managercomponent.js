@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "../modules/manager.css"
-import {
-  createPortfolioManager,
-  deletePortfolioManager,
-  fetchAllPortfolioManagers,
-} from "../services/managerservice";
+import "../modules/manager.css";
+import PortfolioManagersService from "../services/managerservice";
 
 const ManagerComponent = () => {
   const [portfolioManagers, setPortfolioManagers] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
-    status: "",
+    status: Boolean(false),
     role: "",
     bio: "",
     start_date: "",
@@ -22,7 +18,7 @@ const ManagerComponent = () => {
 
   const fetchAllData = async () => {
     try {
-      const response = await fetchAllPortfolioManagers();
+      const response = await PortfolioManagersService.fetchAllPortfolioManagers();
       setPortfolioManagers(response.data);
     } catch (error) {
       console.error("Error fetching portfolio managers:", error);
@@ -37,10 +33,10 @@ const ManagerComponent = () => {
     event.preventDefault();
     try {
       // Refresh the portfolio managers after a new one is created
-      await createPortfolioManager(formData);
+      await PortfolioManagersService.createPortfolioManager(formData);
       setFormData({
         name: "",
-        status: "",
+        status: Boolean(false),
         role: "",
         bio: "",
         start_date: "",
@@ -54,7 +50,7 @@ const ManagerComponent = () => {
 
   const handleDelete = async (portfolioManagerId) => {
     try {
-      const response = await deletePortfolioManager(portfolioManagerId);
+      const response = await PortfolioManagersService.deletePortfolioManager(portfolioManagerId);
       // Refresh the portfolio managers after a deletion
       fetchAllData();
       console.log("Portfolio Manager deleted:", response.data);
@@ -69,7 +65,8 @@ const ManagerComponent = () => {
       <hr className="hr-man"></hr>
       <form onSubmit={handleSubmit}>
         <h4>Please enter your name</h4>
-        <input className="custom-input"
+        <input
+          className="custom-input"
           type="text"
           name="name"
           value={formData.name}
@@ -78,7 +75,8 @@ const ManagerComponent = () => {
           required
         />
         <h4>Please check if you are active</h4>
-        <input className="custom-input"
+        <input
+          className="custom-input"
           type="checkbox"
           name="status"
           value={formData.status}
@@ -87,7 +85,13 @@ const ManagerComponent = () => {
           required
         />
         <h4>Please select your role</h4>
-         <select className="custom-input" name="role" value={formData.role} onChange={handleInputChange} required>
+        <select
+          className="custom-input"
+          name="role"
+          value={formData.role}
+          onChange={handleInputChange}
+          required
+        >
           <option value="" disabled>
             Select Role
           </option>
@@ -95,7 +99,8 @@ const ManagerComponent = () => {
           <option value="Viewer">Viewer</option>
         </select>
         <h4>Write about yourself</h4>
-        <textarea className="custom-input"
+        <textarea
+          className="custom-input"
           name="bio"
           value={formData.bio}
           onChange={handleInputChange}
@@ -103,13 +108,15 @@ const ManagerComponent = () => {
           required
         />
         <h4>Select date</h4>
-        <input className="custom-input"
+        <input
+          className="custom-input"
           type="date"
           name="start_date"
           value={formData.start_date}
           onChange={handleInputChange}
           required
-        /><br/>
+        />
+        <br/>
         <button type="submit">Create Portfolio Manager</button>
       </form>
       {portfolioManagers.map((manager) => (

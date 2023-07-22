@@ -36,7 +36,7 @@ def create_project():
     }
 
     project_id = db.projects.insert_one(project_data).inserted_id
-    return jsonify({'message': 'Project created successfully', 'project_id': str(project_id)}), 201
+    return jsonify({'message': 'Project created successfully'}), 201
 
 # //getting projects
 def get_all_projects():
@@ -45,3 +45,8 @@ def get_all_projects():
         project['_id'] = str(project['_id'])
         project['portfolio_manager_id'] = str(project['portfolio_manager_id'])
     return jsonify(projects), 200
+
+def delete_project(project_id):
+    global projects_data
+    projects_data = [project for project in projects_data if project["_id"] != project_id]
+    return jsonify({"message": "Project deleted successfully"}), 200

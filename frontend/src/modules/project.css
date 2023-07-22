@@ -63,7 +63,7 @@ button{
     margin: auto;
 }
 .project1{
-    box-shadow: rgba(179, 148, 9, 0.4) 5px 5px;
+    box-shadow: rgba(179, 148, 9, 0.4) 5px 0px;
     padding: 20px;
 }
 .project-div{

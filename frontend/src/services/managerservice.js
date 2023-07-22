@@ -1,16 +1,19 @@
-export const fetchAllPortfolioManagers = async () => {
+const BaseUrl = 'http://127.0.0.1:5000/manager/portfolio-managers'
+const PortfolioManagersService = {
+  fetchAllPortfolioManagers : async () => {
     try {
-       let res=await fetch("http://127.0.0.1:5000/manager/portfolio-managers");
-      let r=await res.json();
-      console.log(r);
+       let res=await fetch(`${BaseUrl}`);
+      let manager=await res.json();
+      console.log(manager);
+      return manager;
     } catch (error) {
       console.log(error);
     }
-  };
+  },
 
-export const createPortfolioManager = async (portfolioManagerData) => {
+ createPortfolioManager : async (portfolioManagerData) => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/manager/portfolio-managers', {
+      const response = await fetch(`${BaseUrl}`, {
         method:"POST",
         headers:{
           "content-type": "application/json"
@@ -18,14 +21,15 @@ export const createPortfolioManager = async (portfolioManagerData) => {
         body: JSON.stringify(portfolioManagerData)
       });
      let r=await response.json();
+     alert(r.message);
     } catch (error) {
       throw error;
     }
-}; 
+},
 
 // const getPortfolioManagerById = async (portfolioManagerId) => {
 //     try {
-//       const response = await .get(`http://123.0.0.1:5000/manager/portfolio-managers/${portfolioManagerId}`);
+//       const response = await .get(`${BaseUrl}/${portfolioManagerId}`);
 //       return response.data;
 //     } catch (error) {
 //       throw error;
@@ -34,15 +38,15 @@ export const createPortfolioManager = async (portfolioManagerData) => {
   
 // const updatePortfolioManager = async (portfolioManagerId, portfolioManagerData) => {
 //     try {
-//       const response = await api.put(`http://123.0.0.1:5000/manager/portfolio-managers/${portfolioManagerId}`, portfolioManagerData);
+//       const response = await api.put(`${BaseUrl}/${portfolioManagerId}`, portfolioManagerData);
 //       return response.data;
 //     } catch (error) {
 //       throw error;
 //     }
 //   };  
-export const deletePortfolioManager = async (portfolioManagerId) => {
+ deletePortfolioManager : async (portfolioManagerId) => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/manager/portfolio-managers/${portfolioManagerId}`,{
+      const response = await fetch(`${BaseUrl}/${portfolioManagerId}`,{
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'}
       });
@@ -50,5 +54,8 @@ export const deletePortfolioManager = async (portfolioManagerId) => {
     } catch (error) {
       throw error;
     }
-  }; 
+  }
+}
+export default PortfolioManagersService
+ 
  
