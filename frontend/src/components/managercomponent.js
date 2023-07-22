@@ -6,7 +6,7 @@ const ManagerComponent = () => {
   const [portfolioManagers, setPortfolioManagers] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
-    status: Boolean(false),
+    status: "",
     role: "",
     bio: "",
     start_date: "",
@@ -18,14 +18,22 @@ const ManagerComponent = () => {
 
   const fetchAllData = async () => {
     try {
-      const response = await PortfolioManagersService.fetchAllPortfolioManagers();
-      setPortfolioManagers(response.data);
+      const response =
+        await PortfolioManagersService.fetchAllPortfolioManagers();
+      setPortfolioManagers(response);
     } catch (error) {
       console.error("Error fetching portfolio managers:", error);
     }
   };
 
   const handleInputChange = (event) => {
+    if (event.target.name == "status") {
+      if (event.target.checked == true) {
+        event.target.value = "Active";
+      } else {
+        event.target.value = "Not Active";
+      }
+    }
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
@@ -36,7 +44,7 @@ const ManagerComponent = () => {
       await PortfolioManagersService.createPortfolioManager(formData);
       setFormData({
         name: "",
-        status: Boolean(false),
+        status: "",
         role: "",
         bio: "",
         start_date: "",
@@ -50,7 +58,9 @@ const ManagerComponent = () => {
 
   const handleDelete = async (portfolioManagerId) => {
     try {
-      const response = await PortfolioManagersService.deletePortfolioManager(portfolioManagerId);
+      const response = await PortfolioManagersService.deletePortfolioManager(
+        portfolioManagerId
+      );
       // Refresh the portfolio managers after a deletion
       fetchAllData();
       console.log("Portfolio Manager deleted:", response.data);
@@ -82,7 +92,6 @@ const ManagerComponent = () => {
           value={formData.status}
           onChange={handleInputChange}
           placeholder="Status"
-          required
         />
         <h4>Please select your role</h4>
         <select
@@ -116,19 +125,20 @@ const ManagerComponent = () => {
           onChange={handleInputChange}
           required
         />
-        <br/>
+        <br />
         <button type="submit">Create Portfolio Manager</button>
       </form>
-      {portfolioManagers.map((manager) => (
-        <div key={manager._id}>
-          <p>Name: {manager.name}</p>
-          <p>Status: {manager.status}</p>
-          <p>Role: {manager.role}</p>
-          <p>Bio: {manager.bio}</p>
-          <p>Start Date: {manager.start_date}</p>
-          <button onClick={() => handleDelete(manager._id)}>Delete</button>
-        </div>
-      ))}
+      {portfolioManagers &&
+        portfolioManagers.map((manager) => (
+          <div key={manager._id}>
+            <p>Name: {manager.name}</p>
+            <p>Status: {manager.status}</p>
+            <p>Role: {manager.role}</p>
+            <p>Bio: {manager.bio}</p>
+            <p>Start Date: {manager.start_date}</p>
+            <button onClick={() => handleDelete(manager._id)}>Delete</button>
+          </div>
+        ))}
     </div>
   );
 };
