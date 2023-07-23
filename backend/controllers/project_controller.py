@@ -46,7 +46,11 @@ def get_all_projects():
         project['portfolio_manager_id'] = str(project['portfolio_manager_id'])
     return jsonify(projects), 200
 
-def delete_project(project_id):
-    global projects_data
-    projects_data = [project for project in projects_data if project["_id"] != project_id]
-    return jsonify({"message": "Project deleted successfully"}), 200
+def delete_project_byId(project_id):
+    project_collection = db['projects']
+    project = project_collection.delete_one({"_id":ObjectId(project_id)})
+
+    if project.deleted_count>0:
+        return jsonify({"message":"project deleted successfully"}),200
+    else:
+        return jsonify({"message":"project not found"}),404
