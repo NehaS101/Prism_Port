@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from config.db import db
-from bcrypt import bcrypt
+import bcrypt
 import jwt
 from datetime import datetime, timedelta
 from bson import json_util,ObjectId
