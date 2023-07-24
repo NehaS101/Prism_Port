@@ -7,6 +7,7 @@ const ManagerComponent = () => {
   const navigate = useNavigate();
   const [portfolioManagers, setPortfolioManagers] = useState([]);
   const [formData, setFormData] = useState({
+    img: "",
     name: "",
     status: "",
     role: "",
@@ -23,15 +24,14 @@ const ManagerComponent = () => {
       if (JSON.parse(sessionStorage.getItem("token") == undefined)) {
         alert("Please login first");
         navigate("/login");
-      }else{
-      const response =
-        await PortfolioManagersService.fetchAllPortfolioManagers();
-      setPortfolioManagers(response);
+      } else {
+        const response =
+          await PortfolioManagersService.fetchAllPortfolioManagers();
+        setPortfolioManagers(response);
       }
     } catch (error) {
       console.error("Error fetching portfolio managers:", error);
     }
-  
   };
 
   const handleInputChange = (event) => {
@@ -51,6 +51,7 @@ const ManagerComponent = () => {
       // Refresh the portfolio managers after a new one is created
       await PortfolioManagersService.createPortfolioManager(formData);
       setFormData({
+        img: "",
         name: "",
         status: "",
         role: "",
@@ -82,6 +83,16 @@ const ManagerComponent = () => {
       <h1>Portfolio Managers</h1>
       <hr className="hr-man"></hr>
       <form onSubmit={handleSubmit}>
+        <h4>Upload your image</h4>
+        <input
+          className="custom-input"
+          type="text"
+          name="img"
+          placeholder="image"
+          value={formData.img}
+          onChange={handleInputChange}
+          required
+        />
         <h4>Please enter your name</h4>
         <input
           className="custom-input"
@@ -137,20 +148,20 @@ const ManagerComponent = () => {
         <button type="submit">Create Portfolio Manager</button>
       </form>
       <div className="manager-list">
-      {portfolioManagers &&
-        portfolioManagers.map((manager) => (
-          <div key={manager._id}>
-            <img src="${manager.img}"/>
-            <p>Name: {manager.name}</p>
-            <p>Status: {manager.status}</p>
-            <p>Role: {manager.role}</p>
-            <p>Bio: {manager.bio}</p>
-            <p>Start Date: {manager.start_date}</p>
-            <button onClick={() => handleDelete(manager._id)}>Delete</button>
-          </div>
-        ))}
+        {portfolioManagers &&
+          portfolioManagers.map((manager) => (
+            <div key={manager._id} className="manager-div">
+              <img src={manager.img} />
+              
+              <p>Name: {manager.name}</p>
+              <p>Status: {manager.status}</p>
+              <p>Role: {manager.role}</p>
+              <p>Bio: {manager.bio}</p>
+              <p>Start Date: {manager.start_date}</p>
+              <button onClick={() => handleDelete(manager._id)}>Delete</button>
+            </div>
+          ))}
       </div>
-      
     </div>
   );
 };
