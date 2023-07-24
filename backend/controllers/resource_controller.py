@@ -20,22 +20,22 @@ def get_resource():
 def create_resource():
     data = request.json
     resource_name = data.get('resource_name')
-    task_assigned = data.get('task_assigned')  
+    task_assigned = data.get('task_assigned')
     
-    task = db.tasks.find_one({'task_name': task_assigned})
+    task = task_collection.find_one({'task_name': task_assigned})
     if not task:
-        return jsonify({'message': 'task not found'}), 404
-
+        return jsonify({'message': 'Task not found'}), 404
 
     resource_data = {
         'resource_name': resource_name,
-        'task_assigned': task["_id"]
+        'task_assigned': task_assigned
     }
 
     resource_id = resource_collection.insert_one(resource_data).inserted_id
-    
     return jsonify({"message": "Resource created successfully", "resource_id": str(resource_id)}), 201
 
+   
+   
 def delete_resource(resource_id):
     deleted_resource = resource_collection.find_one_and_delete({"_id": ObjectId(resource_id)})
     if not deleted_resource:
