@@ -5,7 +5,7 @@ from flask_cors import CORS
 from routes.manager_route import manager_router
 from routes.project_route import project_router
 from routes.task_route import task_router
-
+from routes.resuorce_route import resource_router
 
 app = Flask(__name__)
 CORS(app)
@@ -20,6 +20,8 @@ def welcome():
 app.register_blueprint(manager_router,url_prefix='/manager')
 app.register_blueprint(project_router,url_prefix='/project')
 app.register_blueprint(task_router,url_prefix='/task')
+app.register_blueprint(resource_router,url_prefix='/resource')
+
 
 if __name__ == '__main__':
     connection()
