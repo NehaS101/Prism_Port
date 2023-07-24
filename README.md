@@ -7,10 +7,20 @@ PrismPort provides portfolio managers with a user-friendly and comprehensive pla
 <li><b>Frontend : </b>HTML,CSS,Javascript</li> 
 <li><b>Frontend frameworks : </b>React</li> 
 <li><b>Backend : </b>Python</li>
-<li><b>Backend framewroks : </b></li>  
+<li><b>Backend framewroks : Flask</b></li>  
 <li><b>Database : </b>MongoDB</li> 
 
-# API endpoints
+# Deployed App
+
+https://prism-port.vercel.app/
+
+# Installation & Getting Started
+
+bash
+cd frontend
+npm start
+
+# Backend API endpoints
 <h3>Portfolio Manager Endpoints</h3>
 <li>GET /portfolio-managers : Retrieves a list of all portfolio managers.</li>
 <li>GET /portfolio-managers/{id} : Retrieves a specific portfolio managers by ID</li>
