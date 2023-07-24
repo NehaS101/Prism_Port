@@ -16,8 +16,8 @@ https://prism-port.vercel.app/
 
 # Installation & Getting Started
 
-bash
-cd frontend
+bash<br>
+cd frontend<br>
 npm start
 
 # Backend API endpoints
