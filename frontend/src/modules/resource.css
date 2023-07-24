@@ -1,0 +1,32 @@
+.resource{
+    margin-top: 120px;
+  
+}
+.create-resource{
+    margin-bottom:80px ;
+    margin-top: 40px;
+    margin: auto;
+    width: 30%;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: left;
+}
+table{
+    width: 40%;
+    margin: auto;
+    margin-top: 60px;
+}
+.hr-res{
+    width: 180px;
+}
+.res-input{
+    font-size: 20px;
+    border: 1.5px solid rgb(189,135,9);
+    border-radius: 5px;
+    padding: 2px;
+    outline: none;
+    margin-bottom: 20px;
+}
+.res-input:focus{
+    border: 1.5px solid red;
+}

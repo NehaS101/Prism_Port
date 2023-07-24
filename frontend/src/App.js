@@ -10,7 +10,6 @@ import LoginComponent from './components/loginComponent';
 import SignupComponent from './components/signupComponent';
 import LandingComponent from './components/landing component';
 
-
 function App() {
   
   return (
@@ -48,7 +47,7 @@ function App() {
         <Route path="/projects" element={<ProjectComponent />}></Route>
         <Route path="/tasks" element={<TaskComponent />}></Route>
         <Route path="/resources" element={<ResourceComponent />}></Route>
-        <Route path="/login" element={ <LoginComponent />}></Route>
+        <Route path="/login" element={ <LoginComponent />} ></Route>
         <Route path="/signup" element={<SignupComponent />}></Route>
         </Routes> 
       </div> 

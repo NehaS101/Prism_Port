@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ResourceService from '../services/resourceService';
+import "../modules/resource.css"
 
 const ResourceComponent = () => {
   const [resources, setResources] = useState([]);
@@ -54,20 +55,25 @@ const ResourceComponent = () => {
 
   return (
     <div className="resource">
-      <h2>Resources</h2>
+      <h1>Resources</h1>
+      <hr className='hr-res'></hr>
       <div className="create-resource">
+        <h3>Provide Resource</h3>
         <input
           type="text"
+          className='res-input'
           value={newResourceName}
           onChange={(e) => setNewResourceName(e.target.value)}
           placeholder="Resource Name"
         />
+        <h3>Write task name to assigned</h3>
         <input
           type="text"
+          className='res-input'
           value={newTaskAssigned}
           onChange={(e) => setNewTaskAssigned(e.target.value)}
           placeholder="Task Assigned"
-        />
+        /><br></br>
         <button onClick={handleCreateResource}>Create Resource</button>
       </div>
       <table>

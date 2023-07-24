@@ -1,4 +1,6 @@
 import React,{useEffect,useState} from 'react';
+import LoginService from '../services/loginService';
+import "../modules/login.css"
 
 const LoginComponent=()=>{
     const [email, setEmail] = useState('');
@@ -13,7 +15,7 @@ const LoginComponent=()=>{
           password: password,
         };
   
-        const response = await AuthService.login(loginData);
+        const response = await LoginService.login(loginData);
         alert(response.message);
   
         // Clear form fields after successful login
@@ -26,22 +28,27 @@ const LoginComponent=()=>{
   
     return (
       <div className="login">
-        <h2>Login</h2>
+        <h1>Login</h1>
+        <hr className='login-hr'></hr>
         <form onSubmit={handleLogin}>
+          <h3>Write your email address</h3>
           <input
             type="email"
+            className='input'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             required
           />
+          <h3>Write your password</h3>
           <input
             type="password"
+            className='input'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required
-          />
+          /><br/>
           <button type="submit">Login</button>
         </form>
       </div>

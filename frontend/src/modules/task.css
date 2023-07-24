@@ -1,0 +1,42 @@
+.task-main{
+    margin-top: 120px;
+}
+.input-task{
+    font-size: 20px;
+    border: 1.5px solid rgb(189,135,9);
+    border-radius: 5px;
+    padding: 2px;
+    outline: none;
+    margin-bottom: 20px;
+}
+.input-task:focus{
+    border: 1.5px solid red;
+}
+label{
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.table{
+    width: 40%;
+    margin: auto;
+    margin-top: 60px;
+}
+table {
+    border-collapse: collapse; /* Combine cell borders into a single border */
+    width: 100%;
+}
+thead{
+    border-collapse: collapse;
+    width: 100%;
+}
+td{
+    border: 1px solid rgb(189,135,9) ;                                                                                    ;
+}                        
+th{
+    font-size: 22px;                                                                                                                  
+    border: 1px solid rgb(189,135,9);                                                                                                         
+}
+.task-hr{
+    width: 90px;
+}

@@ -7,6 +7,7 @@ from routes.project_route import project_router
 from routes.task_route import task_router
 from routes.resuorce_route import resource_router
 from routes.login_route import login_router
+from routes.signup_route import signup_router
 
 app = Flask(__name__)
 CORS(app)
@@ -23,6 +24,7 @@ app.register_blueprint(project_router,url_prefix='/project')
 app.register_blueprint(task_router,url_prefix='/task')
 app.register_blueprint(resource_router,url_prefix='/resource')
 app.register_blueprint(login_router)
+app.register_blueprint(signup_router)
 
 if __name__ == '__main__':
     connection()

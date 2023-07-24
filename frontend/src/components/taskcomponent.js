@@ -1,5 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import TaskService from '../services/taskservice';
+import "../modules/task.css";
+
 const TaskComponent=()=>{
       const [tasks, setTasks] = useState([]);
       const [formData, setFormData] = useState({
@@ -52,25 +54,28 @@ const TaskComponent=()=>{
       };
     
       return (
-        <div>
-          <h2>Tasks</h2>
+        <div className='task-main'>
+          <h1>Tasks</h1>
+          <hr className='task-hr'></hr>                                                
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="task_name">Task Name:</label>
+              <label htmlFor="task_name">Task Name:  </label>
               <input
                 type="text"
                 id="task_name"
                 name="task_name"
-                value={formData.task_name}
+                className='input-task'
+                value={formData.task_name}                                                                                                                                                                                                                                                
                 onChange={handleInputChange}
                 required
               />
             </div>
             <div>
-              <label htmlFor="status">Status:</label>
-              <select
+              <label htmlFor="status">Status:  </label>
+              <select                                                                            
                 id="status"
                 name="status"
+                className='input-task'
                 value={formData.status}
                 onChange={handleInputChange}
               >
@@ -80,11 +85,12 @@ const TaskComponent=()=>{
               </select>
             </div>
             <div>
-              <label htmlFor="project_name">Project Name:</label>
+              <label htmlFor="project_name">Project Name:  </label>
               <input
                 type="text"
                 id="project_name"
                 name="project_name"
+                className='input-task'
                 value={formData.project_name}
                 onChange={handleInputChange}
                 required
@@ -92,6 +98,7 @@ const TaskComponent=()=>{
             </div>
             <button type="submit">Create Task</button>
           </form>
+          <div className="table">
           <table>
             <thead>
               <tr>
@@ -114,6 +121,8 @@ const TaskComponent=()=>{
               ))}
             </tbody>
           </table>
+          </div>
+         
         </div>
       );
     
