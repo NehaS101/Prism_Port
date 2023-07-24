@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ProjectService from "../services/projectService";
+import { useNavigate } from "react-router-dom";
 import "../modules/project.css";
 
 const ProjectComponent = () => {
+  const navigate = useNavigate();
   const [projects, setProjects] = useState([]);
   const [formData, setFormData] = useState({
     project_name: "",

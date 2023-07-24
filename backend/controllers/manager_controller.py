@@ -13,6 +13,7 @@ from config.db import db
 #creating new portfolio managers
 def create_managers():
     data = request.json
+    img=data.get('img')
     name = data['name']
     status = data['status']
     role = data['role']
@@ -21,6 +22,7 @@ def create_managers():
 
     manager_collection = db['portfolio_Manager']
     manager_data = {
+        "img": img,
         'name':name,
         'status': status,
         'role': role,

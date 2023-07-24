@@ -1,8 +1,10 @@
 import React,{useEffect,useState} from 'react';
 import TaskService from '../services/taskservice';
+import { useNavigate } from "react-router-dom";
 import "../modules/task.css";
 
 const TaskComponent=()=>{
+  const navigate = useNavigate();
       const [tasks, setTasks] = useState([]);
       const [formData, setFormData] = useState({
         task_name: '',

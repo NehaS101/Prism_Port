@@ -51,3 +51,11 @@ button{
     padding-bottom: 8px;
     cursor: pointer;
 }
+.manager-list{
+    display:grid;
+    grid-template-columns:repeat(4,1fr) ;
+    gap: 30px;
+    width: 80%;
+    margin: auto;
+    margin-top: 100px;
+}

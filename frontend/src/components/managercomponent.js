@@ -136,9 +136,11 @@ const ManagerComponent = () => {
         <br />
         <button type="submit">Create Portfolio Manager</button>
       </form>
+      <div className="manager-list">
       {portfolioManagers &&
         portfolioManagers.map((manager) => (
           <div key={manager._id}>
+            <img src="${manager.img}"/>
             <p>Name: {manager.name}</p>
             <p>Status: {manager.status}</p>
             <p>Role: {manager.role}</p>
@@ -147,6 +149,8 @@ const ManagerComponent = () => {
             <button onClick={() => handleDelete(manager._id)}>Delete</button>
           </div>
         ))}
+      </div>
+      
     </div>
   );
 };

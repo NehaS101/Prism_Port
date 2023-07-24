@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ResourceService from '../services/resourceService';
+import { useNavigate } from "react-router-dom";
 import "../modules/resource.css"
 
 const ResourceComponent = () => {
+  const navigate = useNavigate();
   const [resources, setResources] = useState([]);
   const [newResourceName, setNewResourceName] = useState("");
   const [newTaskAssigned, setNewTaskAssigned] = useState("");
