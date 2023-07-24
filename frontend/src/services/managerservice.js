@@ -1,4 +1,4 @@
-const BaseUrl = 'http://127.0.0.1:5000/manager/portfolio-managers'
+const BaseUrl = 'https://prism-port.onrender.com/manager/portfolio-managers'
 const PortfolioManagersService = {
   fetchAllPortfolioManagers : async () => {
     try {

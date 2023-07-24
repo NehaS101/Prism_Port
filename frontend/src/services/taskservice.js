@@ -1,4 +1,4 @@
-const baseurl = 'http://127.0.0.1:5000/task'
+const baseurl = 'https://prism-port.onrender.com/task'
 
 const TaskService = {
     getAllTasks: async () => {

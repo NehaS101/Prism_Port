@@ -1,4 +1,4 @@
-const Base_URL = "http://127.0.0.1:5000/resource"; // Replace with your backend URL
+const Base_URL = "https://prism-port.onrender.com/resource"; // Replace with your backend URL
 
 const ResourceService = {
   getAllResources: async () => {
