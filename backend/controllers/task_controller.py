@@ -1,5 +1,6 @@
 from flask import request, jsonify
-from bson import ObjectId
+from config.db import db
+from bson import json_util,ObjectId
 import sys
 import os
 
@@ -8,9 +9,6 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 sys.path.append(parent_dir)
 
-from config.db import db
-
-task_collection = db["tasks"]
 
 def create_task():
     data = request.json
@@ -28,17 +26,19 @@ def create_task():
         'project_id': project['_id'],
     }
 
-    project_id = db.projects.insert_one(task_data).inserted_id
+    task_id = db.tasks.insert_one(task_data).inserted_id
     return jsonify({'message': 'Task created successfully'}), 201
 
-def get_tasks():
-    tasks = list(task_collection.find())
-    return jsonify({"tasks": tasks})
+def getAll_tasks():
+    task_collection = db['tasks']
+    tasked = list(task_collection.find())
+    serialized_data = json_util.dumps(tasked)  
+    return jsonify(serialized_data),200
 
 def delete_task(task_id):
-    task = task_collection.find_one({"_id": task_id})
-    if not task:
-        return jsonify({"error": "Task not found"}), 404
-
-    task_collection.delete_one({"_id": task_id})
-    return jsonify({"message": "Task deleted successfully"}), 200
+    task_collection= db['tasks']
+    task = task_collection.delete_one({"_id":ObjectId(task_id)})
+    if task.deleted_count>0:
+        return jsonify({"message":"task deleted successfully"}),200
+    else:
+        return jsonify({"message":"task not found"}),404

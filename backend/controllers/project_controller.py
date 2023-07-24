@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from bson import ObjectId
+from bson import ObjectId,json_util
 import sys
 import os
 
@@ -41,10 +41,8 @@ def create_project():
 # //getting projects
 def get_all_projects():
     projects = list(db.projects.find({}))
-    for project in projects:
-        project['_id'] = str(project['_id'])
-        project['portfolio_manager_id'] = str(project['portfolio_manager_id'])
-    return jsonify(projects), 200
+    serialized_data = json_util.dumps(projects) 
+    return jsonify(serialized_data), 200
 
 def delete_project_byId(project_id):
     project_collection = db['projects']
