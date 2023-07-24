@@ -13,10 +13,14 @@ const ResourceComponent = () => {
 
   const fetchResources = async () => {
     try {
+      if (JSON.parse(sessionStorage.getItem("token") == undefined)) {
+        alert("Please login first");
+        navigate("/login");
+      }else{
       const data = await ResourceService.getAllResources();
       console.log(data);
       setResources(data);
-      
+      }
     } catch (error) {
       console.error("Error fetching resources:", error);
     }

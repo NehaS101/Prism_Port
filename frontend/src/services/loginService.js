@@ -10,13 +10,21 @@ const LoginService = {
         },
         body: JSON.stringify(loginData),
       });
-
+      
       if (!response.ok) {
         throw new Error('Failed to log in');
       }
 
       const data = await response.json();
+      let id=data.id;
+      let token=data.token;
+      let name=data.name;
+      sessionStorage.setItem("id",JSON.stringify(id));
+      sessionStorage.setItem("token",JSON.stringify(token));
+      sessionStorage.setItem("name",JSON.stringify(name));
+
       return data;
+
     } catch (error) {
       throw new Error('Error logging in:', error);
     }

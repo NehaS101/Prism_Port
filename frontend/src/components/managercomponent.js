@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../modules/manager.css";
+import { useNavigate } from "react-router-dom";
 import PortfolioManagersService from "../services/managerservice";
 
 const ManagerComponent = () => {
+  const navigate = useNavigate();
   const [portfolioManagers, setPortfolioManagers] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
@@ -18,12 +20,18 @@ const ManagerComponent = () => {
 
   const fetchAllData = async () => {
     try {
+      if (JSON.parse(sessionStorage.getItem("token") == undefined)) {
+        alert("Please login first");
+        navigate("/login");
+      }else{
       const response =
         await PortfolioManagersService.fetchAllPortfolioManagers();
       setPortfolioManagers(response);
+      }
     } catch (error) {
       console.error("Error fetching portfolio managers:", error);
     }
+  
   };
 
   const handleInputChange = (event) => {

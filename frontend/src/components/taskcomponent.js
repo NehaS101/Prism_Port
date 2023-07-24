@@ -16,8 +16,13 @@ const TaskComponent=()=>{
     
       const fetchTasks = async () => {
         try {
+          if (JSON.parse(sessionStorage.getItem("token") == undefined)) {
+            alert("Please login first");
+            navigate("/login");
+          }else{
           const response = await TaskService.getAllTasks();
           setTasks(response);
+          }
         } catch (error) {
           console.error('Error fetching tasks:', error);
         }
